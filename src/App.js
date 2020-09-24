@@ -1,20 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import Products from "./components/Products";
 
-// feature - 1
-// feature - 2
-// feature - 3
-// feature - 4
+import data from "./data.json";
 
-function App() {
+const App = () => {
+  const INITIAL_STATE = {
+    data: data.products,
+    size: "",
+    sort: "",
+  };
+
+  const [state, setState] = useState(INITIAL_STATE);
+
   return (
     <div className="grid-container">
       <header>
         <a href="/">React Shopping Cart</a>
       </header>
-      <main>Product List</main>
+      <main>
+        <div className="content">
+          <div className="main">
+            <Products products={state.data} />
+          </div>
+          <div className="sidebar">Card items</div>
+        </div>
+      </main>
       <footer>All right is reserved.</footer>
     </div>
   );
-}
+};
 
 export default App;
